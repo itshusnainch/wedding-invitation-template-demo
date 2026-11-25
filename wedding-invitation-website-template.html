@@ -5,9 +5,9 @@
      HOW TO MAKE IT YOURS: see README.md in this folder.
      Search this file for [BRIDE NAME], [GROOM NAME], [WEDDING DATE]
      and [VENUE NAME] — every bracketed item is yours to replace.
-     Photos: the sample photos were removed for resale. Each
-     "YOUR PHOTO HERE" block shows the size to use. Replace a block
-     with:  <img src="your-photo.jpg" alt="describe the photo">
+     Photos: sample photos are included in the photos/ folder and
+     shown throughout the template. Swap any photo for your own by
+     replacing the file (same filename) or editing its <img src>.
      ============================================================ -->
 <html lang="en">
 <head>
@@ -53,7 +53,8 @@
   }
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+/* Mobile overflow fix: html must also clip horizontal overflow (body alone is not enough on mobile browsers) */
+html{scroll-behavior:smooth;overflow-x:clip}
 body{
   font-family:'Jost',system-ui,sans-serif;
   background:var(--bg);
@@ -211,14 +212,15 @@ nav{
   background:var(--bg);
   border-bottom:1px solid var(--line);
 }
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
-nav .brand{font-family:'Great Vibes',cursive;font-size:1.55rem;color:var(--blue-deep);text-decoration:none;white-space:nowrap}
-nav .links{display:flex;gap:26px}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
+nav .brand{font-family:'Great Vibes',cursive;font-size:1.55rem;color:var(--blue-deep);text-decoration:none;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+nav .links{display:flex;gap:26px;flex-shrink:0}
 nav .links a{
   color:var(--muted);text-decoration:none;font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400;white-space:nowrap;
 }
 nav .links a:hover{color:var(--blue-deep)}
 @media (max-width:760px){ nav .links a:nth-child(n+4){display:none} nav .links{gap:15px} nav .brand{font-size:1.3rem} nav .links a{font-size:.76rem;letter-spacing:.09em} }
+@media (max-width:480px){ nav .links a:nth-child(n+3){display:none} }
 
 /* ---------- Hero ---------- */
 .hero{
@@ -351,7 +353,7 @@ body.site-in .hero-inner{animation:heroIn 1.1s ease .1s both}
   font-size:.95rem;letter-spacing:.02em;text-transform:none;color:var(--ink);margin:0;font-weight:400;
   transition:background .25s,border-color .25s,color .25s;
 }
-.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg input{position:absolute;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
 .seg label:has(input:checked){background:var(--blue);border-color:var(--blue);color:#fff}
 .form-ok{text-align:center;padding:16px 6px;display:none}
 .form-ok .script{font-size:2.6rem;color:var(--blue-deep)}
@@ -385,10 +387,12 @@ body.site-in .hero-inner{animation:heroIn 1.1s ease .1s both}
 #gift-details.open{display:block}
 #gift-details b{color:var(--ink);font-weight:500}
 
-/* ---------- Photo placeholders (template) ---------- */
-/* The sample photos were removed for resale. Replace each
-   .photo-placeholder block with your own photo, e.g.:
-   <img src="your-photo.jpg" alt="describe the photo"> */
+/* ---------- Sample photos (template) ---------- */
+/* Sample photos are included in the photos/ folder. Replace any
+   photo with your own by swapping the file (same filename) or
+   editing the matching <img src="..."> in the HTML below.
+   The .photo-placeholder styles below are kept for buyers who
+   prefer a placeholder block instead of a photo. */
 .photo-placeholder{
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
   background:repeating-linear-gradient(45deg,#F3EBDD 0 14px,#EFE5D2 14px 28px);
@@ -512,7 +516,8 @@ body:not(.locked) #music-btn{display:flex}
     <div class="ww-grid">
       <article class="ww-card reveal">
         <!-- EDIT: ceremony photo (1200x800 px or larger) — replace this block with <img src="ceremony.jpg" alt="..."> -->
-        <div class="ww-photo photo-placeholder"><span class="ph-label">YOUR PHOTO HERE</span><span class="ph-hint">Ceremony photo · 1200 × 800 px or larger</span></div>
+        <!-- EDIT: sample photo included — replace with your own photo (1200 × 800 px or larger) -->
+        <img class="ww-photo" src="photos/ceremony.jpg" alt="Garden wedding ceremony with floral arch">
         <div class="txt">
           <h3>The Ceremony</h3>
           <!-- EDIT: wedding date + ceremony time -->
@@ -524,7 +529,8 @@ body:not(.locked) #music-btn{display:flex}
       </article>
       <article class="ww-card reveal">
         <!-- EDIT: reception photo (1200x800 px or larger) — replace this block with <img src="reception.jpg" alt="..."> -->
-        <div class="ww-photo photo-placeholder"><span class="ph-label">YOUR PHOTO HERE</span><span class="ph-hint">Reception photo · 1200 × 800 px or larger</span></div>
+        <!-- EDIT: sample photo included — replace with your own photo (1200 × 800 px or larger) -->
+        <img class="ww-photo" src="photos/reception.jpg" alt="Elegant wedding reception table setting">
         <div class="txt">
           <h3>The Reception</h3>
           <!-- EDIT: wedding date + reception time -->
@@ -568,7 +574,8 @@ body:not(.locked) #music-btn{display:flex}
         <!-- EDIT: your story for this moment (1–2 sentences) -->
         <p>[YOUR STORY — how you met, in 1–2 sentences.]</p>
         <!-- EDIT: story photo 1 — replace this block with <img src="story-1.jpg" alt="..."> -->
-        <div class="photo-placeholder"><span class="ph-label">YOUR PHOTO HERE</span><span class="ph-hint">Story photo 1 · 1200 × 800 px or larger</span></div>
+        <!-- EDIT: sample photo included — replace with your own photo (1200 × 800 px or larger) -->
+        <img src="photos/coffee-date.jpg" alt="Couple laughing over coffee">
       </div>
       <div class="t-item alt reveal">
         <span class="t-dot"></span>
@@ -578,7 +585,8 @@ body:not(.locked) #music-btn{display:flex}
         <!-- EDIT: your story for this moment (1–2 sentences) -->
         <p>[YOUR STORY — a trip or memory you share, in 1–2 sentences.]</p>
         <!-- EDIT: story photo 2 — replace this block with <img src="story-2.jpg" alt="..."> -->
-        <div class="photo-placeholder"><span class="ph-label">YOUR PHOTO HERE</span><span class="ph-hint">Story photo 2 · 1200 × 800 px or larger</span></div>
+        <!-- EDIT: sample photo included — replace with your own photo (1200 × 800 px or larger) -->
+        <img src="photos/beach-trip.jpg" alt="Couple walking on the beach at sunset">
       </div>
       <div class="t-item reveal">
         <span class="t-dot"></span>
@@ -588,7 +596,8 @@ body:not(.locked) #music-btn{display:flex}
         <!-- EDIT: your story for this moment (1–2 sentences) -->
         <p>[YOUR STORY — the proposal, in 1–2 sentences.]</p>
         <!-- EDIT: story photo 3 — replace this block with <img src="story-3.jpg" alt="..."> -->
-        <div class="photo-placeholder"><span class="ph-label">YOUR PHOTO HERE</span><span class="ph-hint">Story photo 3 · 1200 × 800 px or larger</span></div>
+        <!-- EDIT: sample photo included — replace with your own photo (1200 × 800 px or larger) -->
+        <img src="photos/proposal.jpg" alt="Proposal in a flower garden at sunset">
       </div>
       <div class="t-item alt reveal">
         <span class="t-dot"></span>
@@ -598,7 +607,8 @@ body:not(.locked) #music-btn{display:flex}
         <!-- EDIT: your closing line for the story -->
         <p>[YOUR WORDS — one line inviting your guests to celebrate with you.]</p>
         <!-- EDIT: story photo 4 — replace this block with <img src="story-4.jpg" alt="..."> -->
-        <div class="photo-placeholder"><span class="ph-label">YOUR PHOTO HERE</span><span class="ph-hint">Story photo 4 · 1200 × 800 px or larger</span></div>
+        <!-- EDIT: sample photo included — replace with your own photo (1200 × 800 px or larger) -->
+        <img src="photos/first-dance.jpg" alt="First dance under string lights">
       </div>
     </div>
   </div>
@@ -615,12 +625,18 @@ body:not(.locked) #music-btn{display:flex}
       <div class="divider"><span>❦</span></div>
     </div>
     <div class="gal-grid reveal">
-      <figure tabindex="0" role="button" aria-label="View photo full-screen: Golden hour, our favourite hour"><div class="photo-placeholder"><span class="ph-label">YOUR PHOTO HERE</span><span class="ph-hint">Gallery photo 1 · 800 × 1000 px or larger</span></div><figcaption>Golden hour, our favourite hour</figcaption></figure>
-      <figure tabindex="0" role="button" aria-label="View photo full-screen: A shower of petals"><div class="photo-placeholder"><span class="ph-label">YOUR PHOTO HERE</span><span class="ph-hint">Gallery photo 2 · 800 × 1000 px or larger</span></div><figcaption>A shower of petals</figcaption></figure>
-      <figure tabindex="0" role="button" aria-label="View photo full-screen: Surrounded by our favourite people"><div class="photo-placeholder"><span class="ph-label">YOUR PHOTO HERE</span><span class="ph-hint">Gallery photo 3 · 800 × 1000 px or larger</span></div><figcaption>Surrounded by our favourite people</figcaption></figure>
-      <figure tabindex="0" role="button" aria-label="View photo full-screen: The first dance"><div class="photo-placeholder"><span class="ph-label">YOUR PHOTO HERE</span><span class="ph-hint">Gallery photo 4 · 800 × 1000 px or larger</span></div><figcaption>The first dance</figcaption></figure>
-      <figure tabindex="0" role="button" aria-label="View photo full-screen: That look"><div class="photo-placeholder"><span class="ph-label">YOUR PHOTO HERE</span><span class="ph-hint">Gallery photo 5 · 800 × 1000 px or larger</span></div><figcaption>That look</figcaption></figure>
-      <figure tabindex="0" role="button" aria-label="View photo full-screen: The details we love"><div class="photo-placeholder"><span class="ph-label">YOUR PHOTO HERE</span><span class="ph-hint">Gallery photo 6 · 800 × 1000 px or larger</span></div><figcaption>The details we love</figcaption></figure>
+      <figure tabindex="0" role="button" aria-label="View photo full-screen: Golden hour, our favourite hour"><!-- EDIT: sample photo included — replace with your own photo (800 × 1000 px or larger) -->
+<img src="photos/couple-portrait.jpg" alt="Couple portrait at golden hour"><figcaption>Golden hour, our favourite hour</figcaption></figure>
+      <figure tabindex="0" role="button" aria-label="View photo full-screen: A shower of petals"><!-- EDIT: sample photo included — replace with your own photo (800 × 1000 px or larger) -->
+<img src="photos/ceremony.jpg" alt="Petal-covered ceremony aisle"><figcaption>A shower of petals</figcaption></figure>
+      <figure tabindex="0" role="button" aria-label="View photo full-screen: Surrounded by our favourite people"><!-- EDIT: sample photo included — replace with your own photo (800 × 1000 px or larger) -->
+<img src="photos/wedding-party.jpg" alt="Wedding party laughing in the garden"><figcaption>Surrounded by our favourite people</figcaption></figure>
+      <figure tabindex="0" role="button" aria-label="View photo full-screen: The first dance"><!-- EDIT: sample photo included — replace with your own photo (800 × 1000 px or larger) -->
+<img src="photos/first-dance.jpg" alt="First dance under string lights"><figcaption>The first dance</figcaption></figure>
+      <figure tabindex="0" role="button" aria-label="View photo full-screen: That look"><!-- EDIT: sample photo included — replace with your own photo (800 × 1000 px or larger) -->
+<img src="photos/proposal.jpg" alt="Proposal moment in the garden"><figcaption>That look</figcaption></figure>
+      <figure tabindex="0" role="button" aria-label="View photo full-screen: The details we love"><!-- EDIT: sample photo included — replace with your own photo (800 × 1000 px or larger) -->
+<img src="photos/bouquet.jpg" alt="Bridal bouquet of blush roses and peonies"><figcaption>The details we love</figcaption></figure>
     </div>
   </div>
 </section>
